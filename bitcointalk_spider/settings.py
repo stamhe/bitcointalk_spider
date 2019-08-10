@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for spider_scrapy_lianjia project
+# Scrapy settings for bitcointalk_spider project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,15 +9,15 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
-#BOT_NAME = 'spider_scrapy_lianjia'
-BOT_NAME = 'lianjia_spider'
+#BOT_NAME = 'bitcointalk_spider'
+BOT_NAME = 'bitcointalk_spider'
 
-SPIDER_MODULES = ['spider_scrapy_lianjia.spiders']
-NEWSPIDER_MODULE = 'spider_scrapy_lianjia.spiders'
+SPIDER_MODULES = ['bitcointalk_spider.spiders']
+NEWSPIDER_MODULE = 'bitcointalk_spider.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'spider_scrapy_lianjia (+http://www.yourdomain.com)'
+#USER_AGENT = 'bitcointalk_spider (+http://www.yourdomain.com)'
 USER_AGENTS = [
         "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:58.0) Gecko/20100101 Firefox/58.0",
         "Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN) AppleWebKit/523.15 (KHTML, like Gecko, Safari/419.3) Arora/0.3 (Change: 287 c9dfb30)",
@@ -90,7 +90,7 @@ COOKIES_ENABLED = False
 # Enable or disable spider middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'spider_scrapy_lianjia.middlewares.MyCustomSpiderMiddleware': 543,
+#    'bitcointalk_spider.middlewares.MyCustomSpiderMiddleware': 543,
 #}
 
 # 是否可以重试
@@ -102,8 +102,8 @@ RETRY_HTTP_CODES = [407,500,502,503,504, 403]
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
     'scrapy.downloadermiddlewares.retry.RetryMiddleware' : 90,
-    'spider_scrapy_lianjia.middlewares.RandomUserAgent': 99,
-    'spider_scrapy_lianjia.middlewares.ProxyMiddleware': 100,
+    'bitcointalk_spider.middlewares.RandomUserAgent': 99,
+#    'bitcointalk_spider.middlewares.ProxyMiddleware': 100,
     'scrapy.contrib.downloadermiddleware.httpproxy.HttpProxyMiddleware': 110,
     'scrapy.contrib.spidermiddleware.referer.RefererMiddleware' : True,
 }
@@ -119,7 +119,7 @@ DOWNLOADER_MIDDLEWARES = {
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'spider_scrapy_lianjia.pipelines.SpiderScrapyLianjiaPipeline': 1,
+    'bitcointalk_spider.pipelines.BitcointalkSpiderScrapyPipeline': 1,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -143,25 +143,7 @@ ITEM_PIPELINES = {
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 PROXIES = [
-'106.4.220.106:16744',
-'27.40.157.1:24010',
-'183.128.56.221:15238',
-'182.255.47.147:15745',
-'118.190.145.84:15524',
-'125.211.128.98:15473',
-'125.106.223.81:24984',
-'49.71.81.79:19313',
-'182.120.198.177:16229',
-'103.214.174.64:20392',
-'47.93.22.15:27041',
-'182.255.47.202:25790',
-'39.108.101.95:20189',
-'175.167.57.219:28596',
-'47.92.128.49:17141',
-'182.110.146.71:21159',
-'60.167.21.147:15282',
-'183.149.239.235:15312',
-'42.227.127.183:23842',
+#'106.4.220.106:16744',
 ]
 
 
