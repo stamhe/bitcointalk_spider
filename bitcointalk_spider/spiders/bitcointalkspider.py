@@ -29,36 +29,18 @@ class bitcointalk_spider(CrawlSpider):
         'https://bitcointalk.org/index.php?board=159.0', # 山寨币创世贴首页
     ]
 
-    city_map = {
-        "1"     : "021", # 上海
-        "2"     : "010", # 北京
-        "4"     : "020", # 广州
-        "7"     : "0755", # 深圳
-    }
-
-    shop_type_map = {
-        # 幼儿教育
-        'g188'   : 110000,
-        # 其他亲子服务
-        'g27769' : 91000,
-        # 亲子旅游
-        'g33808' : 80001,
-        # 亲子游乐
-        'g161' : 71000,
-    }
 
     def parse(self, response):
         sel = Selector(response)
         topic_list = sel.xpath('//td[@class="windowbg"]/span')
-        for bianhao,city_id in self.city_map.items():
-            for cat_id,shop_type in self.shop_type_map.items():
-                next_list_url = 'http://www.dianping.com/search/category/' + bianhao + '/70/' + cat_id
-                yield scrapy.Request(next_list_url, callback=self.parse)
+        for topic in topic_list:
+            topic_url = topic.xpath('a/@href').extract()[0]
+            print topic_url
+            #yield scrapy.Request(next_list_url, callback=self.parse)
+            item = BitcointalkSpiderScrapyItem()
 
-        item = BitcointalkSpiderScrapyItem()
+            #item['topic_url']    = topic_url
 
-        item['topic_url']    = topic_url
-
-        #yield item
+            #yield item
 
 
