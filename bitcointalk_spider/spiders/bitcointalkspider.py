@@ -43,6 +43,6 @@ class bitcointalk_spider(CrawlSpider):
         
         next_page = sel.xpath('//span[@class="prevnext"]/a[@class="navPages"]/@href').extract()
         if len(next_page) > 0:
-            next_list_url = next_page[0];
-            #yield scrapy.Request(next_list_url, callback=self.parse)
+            next_list_url = next_page[1];
+            yield scrapy.Request(next_list_url, callback=self.parse)
 
