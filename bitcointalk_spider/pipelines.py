@@ -26,6 +26,13 @@ class BitcointalkSpiderScrapyPipeline(object):
         #date_time = time.strftime("%Y-%m-%d", time.localtime())
         timestamp = int(time.time())
         if spider.name == 'bitcointalk_spider':
+            
+            cursor.execute("select * from bitcointalk_altcoin where topic_url = " + item['topic_url'])
+            result = cursor.fetchone()
+            if result != None:
+                cursor.close();
+                return item;
+            
             data.append(item['topic_url'])
             data.append(0)
             data.append(timestamp)

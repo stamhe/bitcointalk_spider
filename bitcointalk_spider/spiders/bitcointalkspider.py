@@ -35,12 +35,14 @@ class bitcointalk_spider(CrawlSpider):
         topic_list = sel.xpath('//td[@class="windowbg"]/span')
         for topic in topic_list:
             topic_url = topic.xpath('a/@href').extract()[0]
-            print topic_url
-            #yield scrapy.Request(next_list_url, callback=self.parse)
             item = BitcointalkSpiderScrapyItem()
 
-            #item['topic_url']    = topic_url
+            item['topic_url']    = topic_url
 
             #yield item
-
+        
+        next_page = sel.xpath('//span[@class="prevnext"]/a[@class="navPages"]/@href').extract()
+        if len(next_page) > 0:
+            next_list_url = next_page[0];
+            #yield scrapy.Request(next_list_url, callback=self.parse)
 
