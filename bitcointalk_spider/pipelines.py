@@ -27,7 +27,7 @@ class BitcointalkSpiderScrapyPipeline(object):
         timestamp = int(time.time())
         if spider.name == 'bitcointalk_spider':
             
-            cursor.execute("select * from bitcointalk_altcoin where topic_url = " + item['topic_url'])
+            cursor.execute('select * from bitcointalk_altcoin where topic_url = "' + item['topic_url'] + '"')
             result = cursor.fetchone()
             if result != None:
                 cursor.close();

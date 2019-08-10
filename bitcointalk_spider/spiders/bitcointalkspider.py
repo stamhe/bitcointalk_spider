@@ -39,7 +39,7 @@ class bitcointalk_spider(CrawlSpider):
 
             item['topic_url']    = topic_url
 
-            #yield item
+            yield item
         
         next_page = sel.xpath('//span[@class="prevnext"]/a[@class="navPages"]/@href').extract()
         if len(next_page) > 0:

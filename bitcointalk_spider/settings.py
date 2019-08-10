@@ -57,22 +57,27 @@ ROBOTSTXT_OBEY = False
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 5
+DOWNLOAD_DELAY = 10
 
 # 下载超时
 DOWNLOAD_TIMEOUT = 30
 
 # 默认Item并发数：100
-#CONCURRENT_ITEMS = 100
+# Item Pipeline最大并发ITEM处理数量
+CONCURRENT_ITEMS = 3
 
 # 默认Request并发数：16
-CONCURRENT_REQUESTS = 5
+# Downloader最大并发请求下载数量
+CONCURRENT_REQUESTS = 3
 
 # 默认每个域名的并发数：8
+# 每个目标域名最大的并发请求数量
 CONCURRENT_REQUESTS_PER_DOMAIN = 3
 
 # 每个IP的最大并发数：0表示忽略
+# 每个目标IP最大的并发请求数量
 #CONCURRENT_REQUESTS_PER_IP = 0
+CONCURRENT_REQUESTS_PER_IP = 3
 
 
 # Disable cookies (enabled by default)
@@ -104,8 +109,8 @@ DOWNLOADER_MIDDLEWARES = {
     'scrapy.downloadermiddlewares.retry.RetryMiddleware' : 90,
     'bitcointalk_spider.middlewares.RandomUserAgent': 99,
 #    'bitcointalk_spider.middlewares.ProxyMiddleware': 100,
-    'scrapy.contrib.downloadermiddleware.httpproxy.HttpProxyMiddleware': 110,
-    'scrapy.contrib.spidermiddleware.referer.RefererMiddleware' : True,
+#    'scrapy.contrib.downloadermiddleware.httpproxy.HttpProxyMiddleware': 110,
+#    'scrapy.contrib.spidermiddleware.referer.RefererMiddleware' : True,
 }
 
 #HTTPERROR_ALLOWED_CODES = [200]
